@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+redis
+rq
+jinja2
+python-dotenv
+requests
+pyjwt
+boto3
+websockets

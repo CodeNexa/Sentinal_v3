@@ -1,0 +1,1 @@
+# {{ project_name }}\nGenerated from idea: {{ idea }}\n

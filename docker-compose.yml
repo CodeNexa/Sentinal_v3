@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+  web:
+    build: ./web
+    env_file: .env
+    ports:
+      - "8000:80"
+    depends_on:
+      - redis
+    volumes:
+      - ./templates:/templates:ro
+      - ./storage:/storage
+  worker:
+    build: ./worker
+    env_file: .env
+    depends_on:
+      - redis
+    volumes:
+      - ./templates:/templates:ro
+      - ./storage:/storage
+  ui:
+    build: ./ui
+    env_file: .env
+    ports:
+      - "5173:5173"
+    depends_on:
+      - web
